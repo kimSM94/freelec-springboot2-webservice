@@ -1,41 +1,29 @@
-buildscript{
-
-    /*
-        ext 키워드 build.gradle에서 사용하는 전역변수를 설정하겠다는 의미
-        여기 서는 springBootVersion 전역변수를 생성하고 그 값을 '2.1.7.RELEASE'으로 ㅓ하겠다는 의미
-    * */
-    ext{
-        springBootVersion = '2.1.7.RELEASE'
+buildscript {
+    ext {
+        springBootVersion = '2.0.5.RELEASE'
     }
     repositories {
         mavenCentral()
-        jcenter()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
 }
-// 앞서 선언한 플로그인 의존성들을 적용할 것인지 결정하는 코드
-apply plugin : 'java'
-apply plugin : 'eclipse'
-apply plugin : 'org.springframework.boot'
-apply plugin : 'io.spring.dependency-management'  // 스프링 부트 의존성들을 관리 해주는 플러그인
 
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
 
-group 'org.example'
+group 'com.jojoldu.book'
 version '1.0-SNAPSHOT'
-sourceCompatibility =1.8
+sourceCompatibility = 1.8
 
-
-// 기본적으로 mavenCentral을 많이 사용하지만, 최근에는 라이브러리 업로드 난이도 때문에 jcenter를 많이 사용
-// mavenCetnral : 본인이 만든 라이브러리를 업로드하기 위해서는 정말 많은 과정과 설정이 필요
 repositories {
     mavenCentral()
 }
 
 dependencies {
-//    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-//    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
-    compileClasspath('org.springframework.boot:spring-boot-starter-web')
-    testCompileClasspath('org.springframework.boot:spring-boot-starter-test')
-  }
+    compile('org.springframework.boot:spring-boot-starter-web')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
