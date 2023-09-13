@@ -1,5 +1,6 @@
 package com.jojoldu.book.springboot.domain.posts;
 
+import com.jojoldu.book.springboot.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity
-public class Posts {
+public class Posts extends BaseTimeEntity {
 
     /*
     * Entity는 JPA의 어노테이션이며, @Getter, @NoArgsConstrucotr는 롬복의 어노테이션
@@ -78,4 +79,10 @@ public class Posts {
         this.author = author;
 
     }
+
+    public void update(String title,String content){
+        this.title = title;
+        this.content = content;
+    }
+
 }
