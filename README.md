@@ -32,4 +32,10 @@
     public String index(Model model){
         model.addAttribute("posts", postsService.findAllDesc());
         return "index";
+
     }
+
+### Spring Sercurity Oauth2 Client 라이브러리 사용해서 진행 및 이유
+1. 더는 신규 기능은 추가하지 않고 버그 수정 정도의 기능만 추가될 예정, 신규 기능은 새 oauth2 라이브러리에서만 지원하겠다고 선언
+2. 스프링 부트용 라이브러리 출시
+3. 기존에 사용되던 방식은 확장 포인트가 적절하게 오픈되어 있지 않아 직접 상속하거나 오버라이딩 해야 하고 신규 라이브러리의 경우 확장포인트를 고려해서 설계된 상태
