@@ -28,14 +28,37 @@
    - 서버 템플릿 엔진에서 사용할 수 있는 객체를 저장할 수 있다.
    - postsService.findAllDesc를 posts로 index.mustache에 전달
 
-     @GetMapping("/")
-    public String index(Model model){
-        model.addAttribute("posts", postsService.findAllDesc());
-        return "index";
 
-    }
+`
+
+     @GetMapping("/") 
+     public String index(Model model){
+          model.addAttribute("posts", postsService.findAllDesc());
+          return "index";
+     }
+     
+     
 
 ### Spring Sercurity Oauth2 Client 라이브러리 사용해서 진행 및 이유
 1. 더는 신규 기능은 추가하지 않고 버그 수정 정도의 기능만 추가될 예정, 신규 기능은 새 oauth2 라이브러리에서만 지원하겠다고 선언
 2. 스프링 부트용 라이브러리 출시
 3. 기존에 사용되던 방식은 확장 포인트가 적절하게 오픈되어 있지 않아 직접 상속하거나 오버라이딩 해야 하고 신규 라이브러리의 경우 확장포인트를 고려해서 설계된 상태
+
+#### Optional
+- Optional은 값이 존재할 수도 있고 존재하지 않을 수도 있는 컨테이너 클래스입니다. Optional을 사용함으로써 메서드의 반환 값이 널(null)이 될 가능성을 줄이고, 코드에서 명시적으로 값이 없을 때 어떻게 처리할지를 표현할 수 있습니다.
+
+- 여기서 Optional<User>는 다음과 같은 의미를 가집니다:  EX) Optional<User> findByEmail(String email);
+
+만약 이메일에 해당하는 사용자를 찾았을 경우, Optional에 사용자 객체(User)를 담아서 반환합니다.
+이메일에 해당하는 사용자가 없을 경우, Optional은 비어있는 상태로 반환됩니다. 이것은 널(null)을 반환하는 것보다 안전하며, 코드에서 명시적으로 이 상황을 처리할 수 있도록 합니다.
+
+### 스프링 시큐리티 설정
+1. spring-boot-starter-oauth2-client : 소셜 로그인 등 클라이언트 입장에서 소셜 기능 구현 시 필요한 의존
+
+
+ ######  {{#userName}}
+- 머스테치는 다른 언어와 같은 if문 제공하지 않으며 true/false만 판단
+- 그래서 항상 최종값을 넘겨줘야함
+
+ ######  {{^userName}}
+- 머스테치에 해당 값이 존재하지 않는 경우 &를 사용
