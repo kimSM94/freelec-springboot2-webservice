@@ -62,3 +62,9 @@
 
  ######  {{^userName}}
 - 머스테치에 해당 값이 존재하지 않는 경우 &를 사용
+
+
+### 어노테이션 정리
+1. @Target(ElementType.PARAMETER) // 이 어노테이션이 생성될 수 있는 위치를 지정. Parameter로 지정했으니 메소드의 파라미터로 선언된 객체에서만 사용 가능
+2. interface : 어노테이션 클래스로 지정(LoginUser라는 이름을 가진 어노테이션이 생성
+3. @WithMockUser(roles = "USER") // 인증된 모의 사용자를 만들어 roles에 권한을 추가
